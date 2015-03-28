@@ -25,7 +25,10 @@
         {
             name : 'Garlic',
             variety : 'Red Duke Wight',
-            status: 'Planted Out',
+            status: {
+                name : 'Planted Out',
+                date : new Date(2014, 10, 10)
+            },
             description : 'Garlic is an edible herb / vegetable that typically grows as an annual, which is defined as a plant that matures and completes its lifecycle over the course of a single year.',
             statistics : {
                 type : 'hardneck',
@@ -35,7 +38,10 @@
         {
             name : 'Leek',
             variety : 'Musselbrugh',
-            status: 'Sown',
+            status: {
+                name : 'Sown',
+                date : new Date(2015, 3, 10)
+            },
             description : 'Leek is part on the onion family and has a mild flavour. Blanch the stems to produce more white stem, but green leaves are also used. It flowers with a purple allium type bloom in the second year',
             statistics : {
                 height : '50cm',

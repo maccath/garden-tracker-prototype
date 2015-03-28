@@ -4,7 +4,7 @@
         <h3>
             {{ plant.name }}
             <small>{{ plant.variety }}</small>
-            <span class="label pull-right" ng-class="plantsCtrl.statusLabel(plant.status)">{{ plant.status }}</span>
+            <span class="label pull-right" ng-class="plantsCtrl.statusLabel(plant.status.name)">{{ plant.status.name }} on {{ plant.status.date | date : "dd/MM/yy" }}</span>
         </h3>
         <blockquote>
             <p>{{ plant.description }}</p>
