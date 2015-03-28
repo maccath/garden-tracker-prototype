@@ -8,17 +8,34 @@
             controller: function () {
                 this.plants = plants;
 
+                this.statuses = [
+                    {
+                        name: 'Sown',
+                        class: 'label-default'
+                    },
+                    {
+                        name: 'Sprouting',
+                        class: 'label-warning'
+                    },
+                    {
+                        name: 'Planted Out',
+                        class: 'label-success'
+                    },
+                    {
+                        name: 'Harvesting',
+                        class: 'label-info'
+                    },
+                    {
+                        name: 'Spent',
+                        class: 'label-danger'
+                    }
+                ];
+
                 this.statusLabel = function (status) {
-                    if (status == 'Sown') {
-                        return 'label-warning';
-                    } else if (status == 'Sprouting') {
-                        return 'label-warning';
-                    } else if (status == 'Planted Out') {
-                        return 'label-success';
-                    } else if (status == 'Harvesting') {
-                        return 'label-info';
-                    } else if (status == 'Spent') {
-                        return 'label-danger';
+                    for (var i in this.statuses) {
+                        if (this.statuses[i].name == status) {
+                            return this.statuses[i].class;
+                        }
                     }
                 };
 
