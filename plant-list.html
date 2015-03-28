@@ -5,7 +5,7 @@
             <h3>
                 {{ plant.name }}
                 <small>{{ plant.variety }}</small>
-                <span class="badge pull-right">{{ plant.status }}</span>
+                <span class="label pull-right" ng-class="plantsCtrl.statusLabel(plant.status)">{{ plant.status }}</span>
             </h3>
             <blockquote>
                 <p>{{ plant.description }}</p>

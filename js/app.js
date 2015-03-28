@@ -7,6 +7,14 @@
            templateUrl : 'plant-list.html',
            controller : function() {
                this.plants = plants;
+
+               this.statusLabel = function(status) {
+                   if (status == 'Sown') {
+                       return 'label-warning';
+                   } else if (status == 'Planted Out') {
+                       return 'label-success';
+                   }
+               };
            },
            controllerAs : 'plantsCtrl'
        }
