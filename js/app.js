@@ -1,8 +1,15 @@
 (function() {
     var app = angular.module("gardenTracker", []);
 
-    app.controller("PlantsController", function() {
-        this.plants = plants;
+    app.directive('plantList', function() {
+       return {
+           restrict : 'E',
+           templateUrl : 'plant-list.html',
+           controller : function() {
+               this.plants = plants;
+           },
+           controllerAs : 'plantsCtrl'
+       }
     });
 
     // Plant data
