@@ -52,6 +52,7 @@
                     );
 
                     plant.editing = false;
+                    plant.status = false;
                 };
             },
             controllerAs: 'plantsCtrl'
