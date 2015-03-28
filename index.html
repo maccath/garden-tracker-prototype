@@ -9,5 +9,15 @@
 </head>
 <body>
     <h1>Garden Tracker</h1>
+
+    <div ng-controller="PlantsController as plantsCtrl">
+        <h2>Plants</h2>
+        <ul class="list-group">
+            <li class="list-group-item" ng-repeat="plant in plantsCtrl.plants">
+                <h3>{{ plant.name }} <small>{{ plant.variety }}</small></h3>
+                <blockquote><p>{{ plant.description }}</p></blockquote>
+            </li>
+        </ul>
+    </div>
 </body>
 </html>
