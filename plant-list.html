@@ -4,9 +4,9 @@
         <h3>
             {{ plant.name }}
             <small>{{ plant.variety }}</small>
-            <span class="label pull-right" ng-class="plantsCtrl.statusLabel(plant.status.name)" ng-hide="plant.editing" ng-click="plantsCtrl.editStatus(plant)">
+            <a class="label pull-right" ng-class="plantsCtrl.statusLabel(plant.status.name)" ng-hide="plant.editing" ng-click="plantsCtrl.editStatus(plant)">
                 {{ plant.status.name }} on {{ plant.status.date | date : "dd/MM/yy" }}
-            </span>
+            </a>
             <form class="pull-right form-inline" ng-show="plant.editing" ng-submit="plantsCtrl.updateStatus(plant)">
                 <div class="form-group">
                     <label class="sr-only" for="plantStatus">Status</label>
