@@ -13,7 +13,20 @@
                        return 'label-warning';
                    } else if (status == 'Planted Out') {
                        return 'label-success';
+                   } else if (status == 'Harvesting') {
+                       return 'label-info';
+                   } else if (status == 'Spent') {
+                       return 'label-danger';
                    }
+               };
+
+               this.editStatus = function(plant) {
+                   plant.editing = true;
+               };
+
+               this.updateStatus = function(plant) {
+                   plant.status.date = new Date();
+                   plant.editing = false;
                };
            },
            controllerAs : 'plantsCtrl'
