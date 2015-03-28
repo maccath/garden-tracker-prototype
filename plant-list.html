@@ -23,9 +23,9 @@
         </blockquote>
         <div ng-controller="tabController as tabCtrl">
             <ul class="nav nav-pills">
-                <li ng-class="tabCtrl.tabClass('stats')"><a ng-click="tabCtrl.viewTab('stats')" href="#">Stats</a></li>
-                <li ng-class="tabCtrl.tabClass('notes')"><a ng-click="tabCtrl.viewTab('notes')" href="#">Notes</a></li>
-                <li ng-class="tabCtrl.tabClass('log')"><a ng-click="tabCtrl.viewTab('log')" href="#">Status Log</a></li>
+                <li ng-class="tabCtrl.tabClass('stats')"><a ng-click="tabCtrl.viewTab('stats')">Stats</a></li>
+                <li ng-class="tabCtrl.tabClass('notes')"><a ng-click="tabCtrl.viewTab('notes')">Notes</a></li>
+                <li ng-class="tabCtrl.tabClass('log')"><a ng-click="tabCtrl.viewTab('log')">Status Log</a></li>
             </ul>
             <div ng-show="tabCtrl.tabActive('stats')">
                 <p>
