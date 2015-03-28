@@ -25,24 +25,26 @@
         <blockquote>
             <p>{{ plant.description }}</p>
         </blockquote>
-        <ul class="nav nav-pills">
-            <li ng-class="tab == 'stats' && 'active'"><a ng-click="tab = 'stats'" href="#">Stats</a></li>
-            <li ng-class="tab == 'notes' && 'active'"><a ng-click="tab = 'notes'" href="#">Notes</a></li>
-            <li ng-class="tab == 'log' && 'active'"><a ng-click="tab = 'log'" href="#">Status Log</a></li>
-        </ul>
-        <div ng-show="tab == 'stats'">
-            <dl class="dl-horizontal">
-                <div ng-repeat="(term, definition) in plant.statistics">
-                    <dt>{{ term }}</dt>
-                    <dd>{{ definition }}</dd>
-                </div>
-            </dl>
-        </div>
-        <div ng-show="tab == 'notes'">
-            notes
-        </div>
-        <div ng-show="tab == 'log'">
-            log
+        <div ng-controller="tabController as tabCtrl">
+            <ul class="nav nav-pills">
+                <li ng-class="tabCtrl.tabClass('stats')"><a ng-click="tabCtrl.viewTab('stats')" href="#">Stats</a></li>
+                <li ng-class="tabCtrl.tabClass('notes')"><a ng-click="tabCtrl.viewTab('notes')" href="#">Notes</a></li>
+                <li ng-class="tabCtrl.tabClass('log')"><a ng-click="tabCtrl.viewTab('log')" href="#">Status Log</a></li>
+            </ul>
+            <div ng-show="tabCtrl.tabActive('stats')">
+                <dl class="dl-horizontal">
+                    <div ng-repeat="(term, definition) in plant.statistics">
+                        <dt>{{ term }}</dt>
+                        <dd>{{ definition }}</dd>
+                    </div>
+                </dl>
+            </div>
+            <div ng-show="tabCtrl.tabActive('notes')">
+                notes
+            </div>
+            <div ng-show="tabCtrl.tabActive('log')">
+                log
+            </div>
         </div>
     </li>
 </ul>

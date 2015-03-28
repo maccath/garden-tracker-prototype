@@ -33,6 +33,24 @@
        }
     });
 
+    app.controller("tabController", function() {
+        this.tab = false;
+
+        this.viewTab = function(tab) {
+            this.tab = tab;
+        };
+
+        this.tabActive = function(tab) {
+            return this.tab === tab;
+        };
+
+        this.tabClass = function(tab) {
+            if (this.tab === tab) {
+                return 'active';
+            }
+        }
+    });
+
     // Plant data
     var plants = [
         {
