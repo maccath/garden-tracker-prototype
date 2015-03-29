@@ -48,4 +48,9 @@ angular.module('gardenTracker').directive('plantStatus', function () {
           $scope.editable = true;
       }
   }
+})
+.filter('latest', function(orderByFilter) {
+   return function (input) {
+       return orderByFilter(input, '-date')[0];
+   };
 });
