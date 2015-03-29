@@ -1,0 +1,7 @@
+@media (max-width: 500px) {
+    plant-list h3 .pull-right {
+        float: none !important;
+        margin-top: 1em;
+        display: block;
+    }
+}
