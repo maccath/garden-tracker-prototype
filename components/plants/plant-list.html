@@ -44,14 +44,7 @@
                 <plant-notes></plant-notes>
             </div>
             <div ng-show="tabActive('log')">
-                <p>
-                <dl class="dl-horizontal">
-                    <div ng-repeat="status in plant.statuses | orderBy : '-date'">
-                        <dt>{{ status.name }}</dt>
-                        <dd>{{ status.date | date : 'dd/MM/yyyy' }}</dd>
-                    </div>
-                </dl>
-                </p>
+                <plant-log></plant-log>
             </div>
         </div>
     </li>
