@@ -4,7 +4,7 @@
     app.directive('plantList', function () {
         return {
             restrict: 'E',
-            templateUrl: 'plant-list.html',
+            templateUrl: 'components/plants/plant-list.html',
             controller: function ($scope) {
                 $scope.plants = plants;
                 $scope.statuses = statuses;
