@@ -1,0 +1,35 @@
+<blockquote ng-repeat="note in plant.notes | orderBy : 'date'">
+    <p>
+        {{ note.content }}
+    </p>
+    <footer>
+        <cite>{{ note.author }}</cite> on
+        <date>{{ note.date | date : ("dd/MM/yy 'at' HH:mm") }}</date>
+    </footer>
+</blockquote>
+
+<h4>Write A Note</h4>
+
+<form class="form-horizontal" ng-submit="addNote(plant)">
+    <div class="form-group">
+        <label for="author" class="control-label col-sm-1">Name</label>
+
+        <div class="col-sm-3">
+            <input type="text" class="form-control" name="author" id="author"
+                   ng-model="plant.note.author"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="content" class="control-label  col-sm-1">Note</label>
+
+        <div class="col-sm-5">
+                            <textarea class="form-control" name="content" id="content"
+                                      ng-model="plant.note.content"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-1 col-sm-10">
+            <button class="btn btn-primary" type="submit">Add Note</button>
+        </div>
+    </div>
+</form>

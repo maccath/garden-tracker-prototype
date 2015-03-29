@@ -29,18 +29,6 @@ angular.module('gardenTracker').directive('plantList', function () {
                 plant.editing = false;
                 plant.status = false;
             };
-
-            $scope.addNote = function(plant) {
-                plant.notes.push(
-                    {
-                        content: plant.note.content,
-                        author: plant.note.author,
-                        date: new Date()
-                    }
-                );
-
-                plant.note.content = '';
-            }
         },
         controllerAs: 'plantsCtrl'
     }
