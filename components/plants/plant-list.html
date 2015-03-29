@@ -3,25 +3,12 @@
     <li class="list-group-item" ng-repeat="plant in plants">
         <h3>
             {{ plant.name }}
-            <small>{{ plant.variety }}</small>
-            <a class="label pull-right" ng-class="statusLabel((plant.statuses | orderBy : '-date')[0].name)"
-               ng-hide="plant.editing" ng-click="editStatus(plant)">
-                {{ (plant.statuses | orderBy : "-date")[0].name }} on {{ (plant.statuses | orderBy : "-date")[0].date |
-                date : "dd/MM/yy" }}
-            </a>
 
-            <form class="pull-right form-inline" ng-show="plant.editing" ng-submit="updateStatus(plant)">
-                <div class="form-group">
-                    <label class="sr-only" for="plantStatus">Current Status</label>
-                    <select class="form-control" id="plantStatus" ng-model="plant.status" placeholder="Current status"
-                            ng-options="status.name for status in statuses">
-                        <option value="" disabled selected>Current status</option>
-                    </select>
-                </div>
-                <button type="submit" class="btn btn-primary">Save</button>
-                <a ng-click="plant.editing = false" class="btn">Cancel</a>
-            </form>
+            <small>{{ plant.variety }}</small>
+
+            <plant-status editable></plant-status>
         </h3>
+
         <p>{{ plant.description }}</p>
 
         <div ng-controller="tabController as tabCtrl">

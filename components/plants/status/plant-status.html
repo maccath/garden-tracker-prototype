@@ -1,0 +1,22 @@
+<span ng-if="!editable" class="label pull-right" ng-class="statusLabel((plant.statuses | orderBy : '-date')[0].name)">
+    {{ (plant.statuses | orderBy : "-date")[0].name }} on {{ (plant.statuses | orderBy : "-date")[0].date |
+    date : "dd/MM/yy" }}
+</span>
+
+<a ng-if="editable" class="label pull-right" ng-class="statusLabel((plant.statuses | orderBy : '-date')[0].name)"
+   ng-hide="editingStatus(plant)"  ng-click="editStatus(plant)">
+    {{ (plant.statuses | orderBy : "-date")[0].name }} on {{ (plant.statuses | orderBy : "-date")[0].date |
+    date : "dd/MM/yy" }}
+</a>
+
+<form ng-if="editable" class="pull-right form-inline" ng-show="editingStatus(plant)" ng-submit="updateStatus(plant)">
+    <div class="form-group">
+        <label class="sr-only" for="plantStatus">Current Status</label>
+        <select class="form-control" id="plantStatus" ng-model="plant.status" placeholder="Current status"
+                ng-options="status.name for status in statuses">
+            <option value="" disabled selected>Current status</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a ng-click="cancelEditStatus(plant)" class="btn">Cancel</a>
+</form>
