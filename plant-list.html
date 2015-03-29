@@ -26,11 +26,11 @@
 
         <div ng-controller="tabController as tabCtrl">
             <ul class="nav nav-pills">
-                <li ng-class="tabCtrl.tabClass('stats')"><a ng-click="tabCtrl.viewTab('stats')">Stats</a></li>
-                <li ng-class="tabCtrl.tabClass('notes')"><a ng-click="tabCtrl.viewTab('notes')">Notes</a></li>
-                <li ng-class="tabCtrl.tabClass('log')"><a ng-click="tabCtrl.viewTab('log')">Status Log</a></li>
+                <li ng-class="tabClass('stats')"><a ng-click="viewTab('stats')">Stats</a></li>
+                <li ng-class="tabClass('notes')"><a ng-click="viewTab('notes')">Notes</a></li>
+                <li ng-class="tabClass('log')"><a ng-click="viewTab('log')">Status Log</a></li>
             </ul>
-            <div ng-show="tabCtrl.tabActive('stats')">
+            <div ng-show="tabActive('stats')">
                 <p>
                 <dl class="dl-horizontal">
                     <div ng-repeat="(term, definition) in plant.statistics">
@@ -40,7 +40,7 @@
                 </dl>
                 </p>
             </div>
-            <div ng-show="tabCtrl.tabActive('notes')">
+            <div ng-show="tabActive('notes')">
                 <blockquote ng-repeat="note in plant.notes | orderBy : 'date'">
                     <p>
                         {{ note.content }}
@@ -77,7 +77,7 @@
                     </div>
                 </form>
             </div>
-            <div ng-show="tabCtrl.tabActive('log')">
+            <div ng-show="tabActive('log')">
                 <p>
                 <dl class="dl-horizontal">
                     <div ng-repeat="status in plant.statuses | orderBy : '-date'">

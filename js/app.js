@@ -49,18 +49,18 @@
         }
     });
 
-    app.controller("tabController", function () {
-        this.tab = false;
+    app.controller("tabController", function ($scope) {
+        $scope.tab = false;
 
-        this.viewTab = function (tab) {
+        $scope.viewTab = function (tab) {
             this.tab = tab;
         };
 
-        this.tabActive = function (tab) {
+        $scope.tabActive = function (tab) {
             return this.tab === tab;
         };
 
-        this.tabClass = function (tab) {
+        $scope.tabClass = function (tab) {
             if (this.tab === tab) {
                 return 'active';
             }
