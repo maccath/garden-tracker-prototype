@@ -54,6 +54,18 @@
                     plant.editing = false;
                     plant.status = false;
                 };
+
+                this.addNote = function(plant) {
+                    plant.notes.push(
+                        {
+                            content: plant.note.content,
+                            author: plant.note.author,
+                            date: new Date()
+                        }
+                    );
+
+                    plant.note.content = '';
+                }
             },
             controllerAs: 'plantsCtrl'
         }
@@ -111,7 +123,14 @@
             statistics: {
                 height: '50cm',
                 hardiness: 'Very hardy'
-            }
+            },
+            notes: [
+                {
+                    content: "They're sprouting!",
+                    author: 'Katy',
+                    date: new Date(2015, 2, 20)
+                }
+            ]
         }
     ];
 })();

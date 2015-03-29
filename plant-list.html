@@ -4,13 +4,16 @@
         <h3>
             {{ plant.name }}
             <small>{{ plant.variety }}</small>
-            <a class="label pull-right" ng-class="plantsCtrl.statusLabel((plant.statuses | orderBy : '-date')[0].name)" ng-hide="plant.editing" ng-click="plantsCtrl.editStatus(plant)">
-                {{ (plant.statuses | orderBy : "-date")[0].name }} on {{ (plant.statuses | orderBy : "-date")[0].date | date : "dd/MM/yy" }}
+            <a class="label pull-right" ng-class="plantsCtrl.statusLabel((plant.statuses | orderBy : '-date')[0].name)"
+               ng-hide="plant.editing" ng-click="plantsCtrl.editStatus(plant)">
+                {{ (plant.statuses | orderBy : "-date")[0].name }} on {{ (plant.statuses | orderBy : "-date")[0].date |
+                date : "dd/MM/yy" }}
             </a>
             <form class="pull-right form-inline" ng-show="plant.editing" ng-submit="plantsCtrl.updateStatus(plant)">
                 <div class="form-group">
                     <label class="sr-only" for="plantStatus">Current Status</label>
-                    <select class="form-control" id="plantStatus" ng-model="plant.status" placeholder="Current status" ng-options="status.name for status in plantsCtrl.statuses" >
+                    <select class="form-control" id="plantStatus" ng-model="plant.status" placeholder="Current status"
+                            ng-options="status.name for status in plantsCtrl.statuses">
                         <option value="" disabled selected>Current status</option>
                     </select>
                 </div>
@@ -18,9 +21,8 @@
                 <a ng-click="plant.editing = false" class="btn">Cancel</a>
             </form>
         </h3>
-        <blockquote>
-            <p>{{ plant.description }}</p>
-        </blockquote>
+        <p>{{ plant.description }}</p>
+
         <div ng-controller="tabController as tabCtrl">
             <ul class="nav nav-pills">
                 <li ng-class="tabCtrl.tabClass('stats')"><a ng-click="tabCtrl.viewTab('stats')">Stats</a></li>
@@ -29,27 +31,54 @@
             </ul>
             <div ng-show="tabCtrl.tabActive('stats')">
                 <p>
-                    <dl class="dl-horizontal">
-                        <div ng-repeat="(term, definition) in plant.statistics">
-                            <dt>{{ term }}</dt>
-                            <dd>{{ definition }}</dd>
-                        </div>
-                    </dl>
+                <dl class="dl-horizontal">
+                    <div ng-repeat="(term, definition) in plant.statistics">
+                        <dt>{{ term }}</dt>
+                        <dd>{{ definition }}</dd>
+                    </div>
+                </dl>
                 </p>
             </div>
             <div ng-show="tabCtrl.tabActive('notes')">
-                <p>
-                    notes
-                </p>
+                <blockquote ng-repeat="note in plant.notes | orderBy : 'date'">
+                    <p>
+                        {{ note.content }}
+                    </p>
+                    <footer>
+                        <cite>{{ note.author }}</cite> on
+                        <date>{{ note.date | date : ("dd/MM/yy 'at' HH:mm") }}</date>
+                    </footer>
+                </blockquote>
+
+                <h4>Write A Note</h4>
+                <form class="form-horizontal" ng-submit="plantsCtrl.addNote(plant)">
+                    <div class="form-group">
+                        <label for="author" class="control-label col-sm-1">Name</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" name="author" id="author" ng-model="plant.note.author"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="content" class="control-label  col-sm-1">Note</label>
+                        <div class="col-sm-5">
+                            <textarea class="form-control" name="content" id="content" ng-model="plant.note.content"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-1 col-sm-10">
+                            <button class="btn btn-primary" type="submit">Add Note</button>
+                        </div>
+                    </div>
+                </form>
             </div>
             <div ng-show="tabCtrl.tabActive('log')">
                 <p>
-                    <dl class="dl-horizontal">
-                        <div ng-repeat="status in plant.statuses | orderBy : '-date'">
-                            <dt>{{ status.name }}</dt>
-                            <dd>{{ status.date | date : 'dd/MM/yyyy' }}</dd>
-                        </div>
-                    </dl>
+                <dl class="dl-horizontal">
+                    <div ng-repeat="status in plant.statuses | orderBy : '-date'">
+                        <dt>{{ status.name }}</dt>
+                        <dd>{{ status.date | date : 'dd/MM/yyyy' }}</dd>
+                    </div>
+                </dl>
                 </p>
             </div>
         </div>
