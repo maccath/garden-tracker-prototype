@@ -5,45 +5,23 @@
         return {
             restrict: 'E',
             templateUrl: 'plant-list.html',
-            controller: function () {
-                this.plants = plants;
+            controller: function ($scope) {
+                $scope.plants = plants;
+                $scope.statuses = statuses;
 
-                this.statuses = [
-                    {
-                        name: 'Sown',
-                        class: 'label-default'
-                    },
-                    {
-                        name: 'Sprouting',
-                        class: 'label-warning'
-                    },
-                    {
-                        name: 'Planted Out',
-                        class: 'label-success'
-                    },
-                    {
-                        name: 'Harvesting',
-                        class: 'label-info'
-                    },
-                    {
-                        name: 'Spent',
-                        class: 'label-danger'
-                    }
-                ];
-
-                this.statusLabel = function (status) {
-                    for (var i in this.statuses) {
-                        if (this.statuses[i].name == status) {
-                            return this.statuses[i].class;
+                $scope.statusLabel = function (status) {
+                    for (var i in $scope.statuses) {
+                        if ($scope.statuses[i].name == status) {
+                            return $scope.statuses[i].class;
                         }
                     }
                 };
 
-                this.editStatus = function (plant) {
+                $scope.editStatus = function (plant) {
                     plant.editing = true;
                 };
 
-                this.updateStatus = function (plant) {
+                $scope.updateStatus = function (plant) {
                     plant.statuses.push(
                         {
                             name: plant.status.name,
@@ -55,7 +33,7 @@
                     plant.status = false;
                 };
 
-                this.addNote = function(plant) {
+                $scope.addNote = function(plant) {
                     plant.notes.push(
                         {
                             content: plant.note.content,
@@ -89,6 +67,30 @@
         }
     });
 
+    // Status data
+    var statuses = [
+        {
+            name: 'Sown',
+            class: 'label-default'
+        },
+        {
+            name: 'Sprouting',
+            class: 'label-warning'
+        },
+        {
+            name: 'Planted Out',
+            class: 'label-success'
+        },
+        {
+            name: 'Harvesting',
+            class: 'label-info'
+        },
+        {
+            name: 'Spent',
+            class: 'label-danger'
+        }
+    ];
+
     // Plant data
     var plants = [
         {
@@ -104,7 +106,8 @@
             statistics: {
                 type: 'hardneck',
                 colour: 'white'
-            }
+            },
+            notes : []
         },
         {
             name: 'Leek',
