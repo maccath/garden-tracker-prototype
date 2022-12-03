@@ -1,15 +1,11 @@
 # Garden Tracker
 
-A garden tracking app, because I wanted to play with Angular.js.
+A prototype garden tracking app built using AngularJS.
 
 It displays a list of plants and their current statuses, as well as statistics, logs and notes.
 
-Data currently doesn't persist.
-
-## Installation
-
-Simply clone from git, then run `index.html` in your browser of choice.
+Data is hard-coded and does not persist.
 
 ## Demo
 
-A working demo of the app can be found at http://hako.miggy.org/~katy/garden-tracker
+A working demo of the app has been deployed to GitHub pages and can be found at https://maccath.github.io/garden-tracker/
