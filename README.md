@@ -8,4 +8,4 @@ Data is hard-coded and does not persist.
 
 ## Demo
 
-A working demo of the app has been deployed to GitHub pages and can be found at https://maccath.github.io/garden-tracker/
+A working demo of the app has been deployed to GitHub pages and can be found at https://maccath.github.io/garden-tracker-prototype/
